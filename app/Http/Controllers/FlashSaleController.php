@@ -30,7 +30,7 @@ class FlashSaleController extends Controller
             $flashCategories[$i]["product"]["category"]["media"] = $categoryMedia;
         }
 
-        return $flashCategories;
+        return ['success'=>true,'data'=>$flashCategories];
     }
 
     /**

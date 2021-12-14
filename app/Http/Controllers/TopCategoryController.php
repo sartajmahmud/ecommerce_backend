@@ -29,7 +29,7 @@ class TopCategoryController extends Controller
             $topCategories[$i]["product"]["category"]["media"] = $categoryMedia;
         }
 
-        return $topCategories;
+        return ["success"=>true, "data"=>$topCategories];
     }
 
     /**

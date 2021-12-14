@@ -90,8 +90,8 @@ class CategoryController extends Controller
         //
     }
 
-    public function getCategoryProduct(Request $request){
-        $products = Product::where('category_id',$request->categoryID)->get();
+    public function getCategoryProduct($id){
+        $products = Product::where('category_id',$id)->get();
         //return count($products);
         for($i=0; $i<count($products); $i++){
             $category = Category::find($products[$i]['category_id']);

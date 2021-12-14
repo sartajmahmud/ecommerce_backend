@@ -29,7 +29,7 @@ class TodaysDealController extends Controller
             $todaysDeal[$i]["product"]["category"]["media"] = $categoryMedia;
         }
 
-        return $todaysDeal;
+        return ["success"=>true, "data"=>$todaysDeal];
     }
 
     /**

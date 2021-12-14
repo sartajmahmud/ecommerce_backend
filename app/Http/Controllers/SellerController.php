@@ -2,14 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
-use App\Models\FeaturedProduct;
-use App\Models\Media;
-use App\Models\Product;
-use App\Models\TodaysDeal;
 use Illuminate\Http\Request;
 
-class FeaturedProductController extends Controller
+class SellerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,19 +13,7 @@ class FeaturedProductController extends Controller
      */
     public function index()
     {
-        $featuredproducts = FeaturedProduct::all();
-        for ($i = 0; $i < count($featuredproducts); $i++) {
-            $product = Product::find($featuredproducts[$i]["product_id"]);
-            $featuredproducts[$i]["product"] = $product;
-            $media = Media::find($featuredproducts[$i]["product"]['media_id']);
-            $featuredproducts[$i]["product"]["media"] = $media;
-            $category = Category::find($featuredproducts[$i]["product"]['category_id']);
-            $featuredproducts[$i]["product"]["category"] = $category;
-            $categoryMedia = Media::find($featuredproducts[$i]["product"]['category']['media_id']);
-            $featuredproducts[$i]["product"]["category"]["media"] = $categoryMedia;
-        }
-
-        return ["success"=>true, "data"=>$featuredproducts];
+        //
     }
 
     /**
