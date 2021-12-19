@@ -29,4 +29,5 @@ Route::get('/featuredproduct', [ \App\Http\Controllers\FeaturedProductController
 Route::get('/allcategories', [ \App\Http\Controllers\CategoryController::class, 'index'])->name('categories.get');
 Route::get('/categoryproduct/{id}', [ \App\Http\Controllers\CategoryController::class, 'getCategoryProduct'])->name('category.product.get');
 Route::get('/sellers', [ \App\Http\Controllers\SellerController::class, 'index'])->name('sellers.get');
-//Route::get('/categoryproduct/{id}', [ \App\Http\Controllers\CategoryController::class, 'getCategoryProduct'])->name('category.product.get');
+Route::post('/mobilelogin', [ \App\Http\Controllers\UserController::class, 'mobileLogin'])->name('user.login.get');
+Route::post('/mobilesignup', [ \App\Http\Controllers\UserController::class, 'mobileSignUp'])->name('user.sign.get');

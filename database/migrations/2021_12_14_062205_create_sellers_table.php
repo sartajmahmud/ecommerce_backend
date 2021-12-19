@@ -16,8 +16,13 @@ class CreateSellersTable extends Migration
         Schema::create('sellers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('phoneNumber');
+            $table->string('email');
+            $table->string('address');
+            $table->double('latitude');
+            $table->double('longitude');
             $table->integer('inventory_id');
-
+            $table->integer('media_id');
             $table->timestamps();
         });
     }
