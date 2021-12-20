@@ -2,13 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\AssignedSeller;
-use App\Models\Seller;
-use App\Models\User;
 use Illuminate\Http\Request;
-use phpDocumentor\Reflection\Types\True_;
 
-class SellerController extends Controller
+class SalesVisitController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -86,15 +82,7 @@ class SellerController extends Controller
         //
     }
 
-    public function getAssignedSellers($id){
-        $assignedSellers = AssignedSeller::where('user_id',$id)->get();
-        for ($i = 0; $i < count($assignedSellers); $i++) {
-            $user = User::find($assignedSellers[$i]["user_id"]);
-            $assignedSellers[$i]["user"] = $user;
-            $seller = Seller::find($assignedSellers[$i]["seller_id"]);
-            $assignedSellers[$i]["seller"] = $seller;
+    public function addVisit(Request $request){
 
-        }
-        return ['success'=> true, 'data'=> $assignedSellers];
     }
 }
