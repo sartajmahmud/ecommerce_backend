@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\SalesVisit;
 use Illuminate\Http\Request;
 
 class SalesVisitController extends Controller
@@ -83,6 +84,17 @@ class SalesVisitController extends Controller
     }
 
     public function addVisit(Request $request){
+        $newVisit = new SalesVisit();
+        $newVisit->salesman_id = $request->salesman_id;
+        $newVisit->seller_id = $request->seller_id;
+        $newVisit->contact_person = $request->contact_person;
+        $newVisit->contact_detail = $request->contact_detail;
+        $newVisit->save();
+        return ["success"=>true];
+    }
 
+    public function getSalesVisits($id){
+        $salesVisits = SalesVisit::where('salesman_id',$id)->get();
+        return ["success"=> true, "data"=>$salesVisits];
     }
 }

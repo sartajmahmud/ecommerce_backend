@@ -94,7 +94,7 @@ class UserController extends Controller
             $user->device_token = $request->device_token;
             $user->save();
         }
-        return ['success' => $success];
+        return ['success' => $success , "data"=>$user];
     }
 
     public function mobileSignUp(Request $request)

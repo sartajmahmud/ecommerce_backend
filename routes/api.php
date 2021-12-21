@@ -33,5 +33,7 @@ Route::get('/assignedsellers/{id}', [ \App\Http\Controllers\SellerController::cl
 Route::post('/mobilelogin', [ \App\Http\Controllers\UserController::class, 'mobileLogin'])->name('user.login.get');
 Route::post('/mobilesignup', [ \App\Http\Controllers\UserController::class, 'mobileSignUp'])->name('user.sign.get');
 Route::post('/addsalesorder', [ \App\Http\Controllers\SalesOrderController::class, 'addOrder'])->name('add.sales.order');
-Route::post('/addvisitorder', [ \App\Http\Controllers\SalesVisitController::class, 'addVisit'])->name('add.sales.visit');
+Route::get('/salesorders/{id}', [ \App\Http\Controllers\SalesOrderController::class, 'getSalesOrder'])->name('get.sales.order');
+Route::post('/addsalesvisit', [ \App\Http\Controllers\SalesVisitController::class, 'addVisit'])->name('add.sales.visit');
+Route::get('/salesvisits/{id}', [ \App\Http\Controllers\SalesVisitController::class, 'getSalesVisits'])->name('get.sales.visit');
 

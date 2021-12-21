@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\AssignedSeller;
+use App\Models\Inventory;
+use App\Models\Media;
+use App\Models\Product;
 use App\Models\Seller;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -93,7 +96,12 @@ class SellerController extends Controller
             $assignedSellers[$i]["user"] = $user;
             $seller = Seller::find($assignedSellers[$i]["seller_id"]);
             $assignedSellers[$i]["seller"] = $seller;
-
+            $inventory = Inventory::find($seller["inventory_id"]);
+            $media = Media::find($seller["media_id"]);
+            $assignedSellers[$i]["seller"]["inventory"] = $inventory;
+            $assignedSellers[$i]["seller"]["media"] = $media;
+            $product = Product::find($inventory["product_id"]);
+            $assignedSellers[$i]["seller"]["inventory"]["product"] = $product;
         }
         return ['success'=> true, 'data'=> $assignedSellers];
     }

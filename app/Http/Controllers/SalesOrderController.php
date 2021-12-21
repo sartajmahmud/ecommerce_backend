@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\SalesOrder;
+use App\Models\SalesOrderItem;
 use Illuminate\Http\Request;
 
 class SalesOrderController extends Controller
@@ -83,6 +85,26 @@ class SalesOrderController extends Controller
     }
 
     public function addOrder(Request $request){
+        $newOrder = new SalesOrder();
+        $newOrder->salesman_id = $request->salesman_id;
+        $newOrder->seller_id = $request->seller_id;
+        $newOrder->reference = $request->reference;
+        $newOrder->order_date = now();
+        $newOrder->delivery_date = now();
+        //need to make dates dynamic
+        $newOrder->save();
+        return ['success'=>true];
+    }
+
+    public function getSalesOrder($id){
+        $salesOrders = SalesOrder::where('salesman_id',$id)->get();
+        for($i =0 ; $i <count($salesOrders); $i++){
+            $products = SalesOrderItem::where('sales_order_id',$salesOrders[$i]['id'])->get();
+            $salesOrders[$i]['products'] = $products;
+        }
+
+
+        return ["success"=>true,"data"=>$salesOrders];
 
     }
 }
