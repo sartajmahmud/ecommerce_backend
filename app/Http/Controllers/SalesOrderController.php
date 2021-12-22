@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\SalesOrder;
 use App\Models\SalesOrderItem;
+use App\Models\Seller;
 use Illuminate\Http\Request;
 
 class SalesOrderController extends Controller
@@ -98,9 +99,13 @@ class SalesOrderController extends Controller
 
     public function getSalesOrder($id){
         $salesOrders = SalesOrder::where('salesman_id',$id)->get();
+
         for($i =0 ; $i <count($salesOrders); $i++){
+            //$seller = Seller::where('id',$salesOrders[$i]['seller_id'])->get();
+            $seller = Seller::find($salesOrders[$i]['seller_id']);
+            $salesOrders[$i]['seller'] = $seller;
             $products = SalesOrderItem::where('sales_order_id',$salesOrders[$i]['id'])->get();
-            $salesOrders[$i]['products'] = $products;
+            $salesOrders[$i]['sales_order_item'] = $products;
         }
 
 

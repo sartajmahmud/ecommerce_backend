@@ -89,12 +89,15 @@ class UserController extends Controller
         $success = false;
         if($user != null){
             $success = true;
+            if($request->device_token != null){
+                $user->device_token = $request->device_token;
+                $user->save();
+            }
+            return ['success' => $success , "data"=>$user];
+        }else{
+            return ['success' => $success, "data"=>null];
         }
-        if($request->device_token != null){
-            $user->device_token = $request->device_token;
-            $user->save();
-        }
-        return ['success' => $success , "data"=>$user];
+
     }
 
     public function mobileSignUp(Request $request)
@@ -108,5 +111,16 @@ class UserController extends Controller
         $newUser->device_token = $request->device_token;
         $newUser->save();
         return ['success'=> true, 'message'=>'User successfully created'];
+    }
+
+    public function checkDuplicate(Request $request)
+    {
+        $user = User::where('phoneNumber',$request->phoneNumber)->get();
+        if(count($user) == 0){
+            return ["success"=>false];
+        }
+        else {
+            return ["success"=>true];
+        }
     }
 }
