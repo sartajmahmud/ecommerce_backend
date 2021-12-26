@@ -39,4 +39,5 @@ Route::get('/salesvisits/{id}', [ \App\Http\Controllers\SalesVisitController::cl
 Route::post('/duplicatecheck', [ \App\Http\Controllers\UserController::class, 'checkDuplicate'])->name('user.duplicate.check');
 Route::get('/userprofile/{id}', [ \App\Http\Controllers\UserController::class, 'show'])->name('get.user.data');
 Route::post('/userprofile', [ \App\Http\Controllers\UserController::class, 'edit'])->name('user.user.edit');
+Route::get('/notifications', [ \App\Http\Controllers\NotificationsController::class, 'show'])->name('get.notification.data');
 
