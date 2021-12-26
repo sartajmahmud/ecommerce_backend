@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\SalesVisit;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -46,7 +47,16 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+
+
+
+            //$seller = Seller::where('id',$salesOrders[$i]['seller_id'])->get();
+            $user = User::find($id);
+
+
+
+
+        return ["success"=>true,"data"=>$user];
     }
 
     /**
@@ -55,9 +65,14 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
-        //
+        $editUser = User::find($request->id);
+        $editUser->name = $request->name;
+        $editUser->email = $request->email;
+        $editUser->phoneNumber = $request->phoneNumber;
+        $editUser->save();
+        return ["success"=>true];
     }
 
     /**

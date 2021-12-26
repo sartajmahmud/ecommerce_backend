@@ -27,7 +27,7 @@ Route::get('/flashsales', [ \App\Http\Controllers\FlashSaleController::class, 'i
 Route::get('/todaysdeal', [ \App\Http\Controllers\TodaysDealController::class, 'index'])->name('todays.deal.get');
 Route::get('/featuredproduct', [ \App\Http\Controllers\FeaturedProductController::class, 'index'])->name('featured.product.get');
 Route::get('/allcategories', [ \App\Http\Controllers\CategoryController::class, 'index'])->name('categories.get');
-Route::get('/categoryproduct/{id}', [ \App\Http\Controllers\CategoryController::class, 'getCategorpyProduct'])->name('category.product.get');
+Route::get('/categoryproduct/{id}', [ \App\Http\Controllers\CategoryController::class, 'getCategoryProduct'])->name('category.product.get');
 Route::get('/sellers', [ \App\Http\Controllers\SellerController::class, 'index'])->name('sellers.get');
 Route::get('/assignedsellers/{id}', [ \App\Http\Controllers\SellerController::class, 'getAssignedSellers'])->name('assigned.sellers.get');
 Route::post('/mobilelogin', [ \App\Http\Controllers\UserController::class, 'mobileLogin'])->name('user.login.get');
@@ -40,4 +40,7 @@ Route::post('/duplicatecheck', [ \App\Http\Controllers\UserController::class, 'c
 Route::post('/attendance', [ \App\Http\Controllers\SalesmanAttendanceController::class, 'entryAttendance'])->name('user.attendance.entry');
 Route::get('/attendancerecord/{id}', [ \App\Http\Controllers\SalesmanAttendanceController::class, 'getUserAttendance'])->name('user.attendance.list');
 
+Route::get('/userprofile/{id}', [ \App\Http\Controllers\UserController::class, 'show'])->name('get.user.data');
+Route::post('/userprofile', [ \App\Http\Controllers\UserController::class, 'edit'])->name('user.user.edit');
+Route::get('/notifications', [ \App\Http\Controllers\NotificationsController::class, 'show'])->name('get.notification.data');
 

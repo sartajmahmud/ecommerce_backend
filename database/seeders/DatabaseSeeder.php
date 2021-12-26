@@ -265,6 +265,34 @@ class DatabaseSeeder extends Seeder
             'order_date' => '2021-10-01',
             'delivery_date' => '2021-09-10'
         ]);
+        DB::table('notifications')->insert([
+
+            'media_id' => '1',
+            'message' => '1% OFF',
+            'enable' => '1'
+
+        ]);
+        DB::table('notifications')->insert([
+
+            'media_id' => '1',
+            'message' => '1000% OFF',
+            'enable' => '1'
+
+        ]);
+        DB::table('notifications')->insert([
+
+            'media_id' => '1',
+            'message' => '1000% OFF',
+            'enable' => '1'
+
+        ]);
+        DB::table('notifications')->insert([
+
+            'media_id' => '1',
+            'message' => '1000% OFF',
+            'enable' => '1'
+
+        ]);
 
 
 
