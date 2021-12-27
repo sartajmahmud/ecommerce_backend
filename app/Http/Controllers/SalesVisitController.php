@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\SalesVisit;
+use App\Models\Seller;
 use Illuminate\Http\Request;
 
 class SalesVisitController extends Controller
@@ -95,6 +96,10 @@ class SalesVisitController extends Controller
 
     public function getSalesVisits($id){
         $salesVisits = SalesVisit::where('salesman_id',$id)->get();
+        for($i = 0; $i<count($salesVisits); $i++){
+            $seller = Seller::find($salesVisits[$i]['seller_id']);
+            $salesVisits[$i]['seller'] = $seller;
+        }
         return ["success"=> true, "data"=>$salesVisits];
     }
 }
